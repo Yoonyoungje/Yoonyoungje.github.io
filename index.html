@@ -93,17 +93,9 @@
   .nav li a:focus-visible { outline-offset: -2px; }
 
   /* Hero */
-  .hero { padding-block: 56px 64px; }
-  .hero > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 480px); gap: 48px 64px; align-items: start; }
+  .hero { padding-block: 48px 48px; }
+  .hero > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 480px); gap: 32px 64px; align-items: start; }
   .intro { min-width: 0; }
-  .id { display: flex; align-items: flex-end; gap: 20px; }
-  .name { min-width: 0; }
-  /* Replace the .photo div with: <img class="photo" src="data:image/jpeg;base64,..." alt="Young Je Yoon"> */
-  .photo {
-    flex: 0 0 auto; width: 84px; max-width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
-    border: 1px dashed var(--rule-strong); border-radius: 3px; background: var(--paper-deep);
-    display: grid; place-items: center; font: 13px/1.2 var(--font-ui); color: var(--ink-soft);
-  }
   h1 { font-size: clamp(40px, 5.6vw, 64px); line-height: 1.02; letter-spacing: -0.015em; font-weight: 600; margin: 0; }
   .role { font-family: var(--font-ui); font-size: 19px; color: var(--ink-soft); margin-top: 10px; }
   .lead { font-size: 21px; line-height: 1.5; max-width: 30em; margin-top: 28px; text-wrap: pretty; }
@@ -124,7 +116,7 @@
   .panel { background: var(--panel); border: 1px solid var(--panel-rule); border-radius: 3px; overflow: hidden; }
   #rsm { display: block; width: 100%; max-width: 100%; height: auto; }
   .fig-cap {
-    display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: center;
+    display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; align-items: center;
     margin-top: 14px; font-size: 15px; line-height: 1.5; color: var(--ink-soft);
   }
   .xsec { display: block; width: 100%; max-width: 120px; height: auto; }
@@ -164,6 +156,7 @@
 
   /* Research */
   .area p { margin-top: 8px; max-width: 36em; }
+  .area + .area { padding-top: 24px; border-top: 1px solid var(--rule); }
   .tools { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 24px; margin: 0; }
   .tools dt { font-family: var(--font-ui); font-size: 16px; color: var(--ink-soft); padding-top: 2px; }
   .tools dd { margin: 0; min-width: 0; }
@@ -200,10 +193,14 @@
   }
   @media (max-width: 520px) {
     .hero { padding-block: 32px 40px; }
+    html { scroll-padding-top: 96px; }
     .nav .brand { display: none; }
+    .nav ul { flex: 1; flex-wrap: wrap; justify-content: center; gap: 0 12px; overflow: visible; padding-block: 4px; }
+    .nav li a { padding: 6px 2px; }
+    .hero > .wrap { row-gap: 24px; }
     .lead { font-size: 19px; }
     .item { grid-template-columns: minmax(0, 1fr); gap: 2px; }
-    .fig-cap { grid-template-columns: minmax(0, 1fr); }
+    .fig-cap { grid-template-columns: 64px minmax(0, 1fr); align-items: start; }
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
@@ -225,13 +222,8 @@
 <header class="hero" id="top">
   <div class="wrap">
     <div class="intro">
-      <div class="id">
-        <div class="photo" aria-hidden="true">Photo</div>
-        <div class="name">
-          <h1>Young&nbsp;Je Yoon</h1>
-          <p class="role">Integrated <span class="nw">M.S.–Ph.D.</span> student, UNIST</p>
-        </div>
-      </div>
+      <h1>Young&nbsp;Je Yoon</h1>
+      <p class="role">Integrated <span class="nw">M.S.–Ph.D.</span> student, UNIST</p>
       <div class="lead">
         <p>My research focuses on characterizing nanoscale structures using <span class="nw">X-ray</span> scattering.</p>
         <p>My work in large language models investigates how language differences affect information retrieval and reasoning.</p>
@@ -262,20 +254,6 @@
   </div>
 </header>
 
-<section class="sec" id="timeline" aria-labelledby="h-timeline">
-  <div class="wrap">
-    <h2 id="h-timeline">Timeline</h2>
-    <div class="body">
-      <ol class="tl" aria-label="Career from 2009 to the present, drawn to scale">
-        <li class="edu" style="--yrs: 7"><span class="yr">2009</span><span class="bar"></span><span class="what">B.S.</span><span class="where">Inha University</span></li>
-        <li class="ind" style="--yrs: 3"><span class="yr">2016</span><span class="bar"></span><span class="what">Display industry</span><span class="where">Development team</span></li>
-        <li class="ind" style="--yrs: 4"><span class="yr">2019</span><span class="bar"></span><span class="what">Start-up</span><span class="where"><span class="nw">Mass-production</span> technology</span></li>
-        <li class="edu" style="--yrs: 3.9"><span class="yr">2023</span><span class="yr yr-end">Present</span><span class="bar"></span><span class="what">Integrated <span class="nw">M.S.–Ph.D.</span></span><span class="where">UNIST</span></li>
-      </ol>
-    </div>
-  </div>
-</section>
-
 <section class="sec" id="research" aria-labelledby="h-research">
   <div class="wrap">
     <h2 id="h-research">Research</h2>
@@ -286,8 +264,22 @@
       </div>
       <div class="area">
         <h3>Cross-lingual retrieval and LLM evaluation</h3>
-        <p>I study retrieval-augmented language models in cross-lingual settings, where a question in one language requires evidence written in another. My research focuses on <span class="nw">multi-hop</span> question answering, with particular attention to retrieval effectiveness and answer faithfulness. I developed <span class="nw">K-CrossHop</span>, a <span class="nw">Korean–English</span> benchmark for examining where cross-lingual failures arise in retrieval and evidence-based answering.</p>
+        <p>I study retrieval-augmented language models in cross-lingual settings, where a question in one language requires evidence written in another. My research focuses on <span class="nw">multi-hop</span> question answering, with particular attention to retrieval effectiveness and answer faithfulness. I developed <a class="nw" href="#publications">K-CrossHop</a>, a <span class="nw">Korean–English</span> benchmark for examining where cross-lingual failures arise in retrieval and evidence-based answering.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="timeline" aria-labelledby="h-timeline">
+  <div class="wrap">
+    <h2 id="h-timeline">Timeline</h2>
+    <div class="body">
+      <ol class="tl" aria-label="Career from 2009 to the present, drawn to scale">
+        <li class="edu" style="--yrs: 7"><span class="yr">2009</span><span class="bar"></span><span class="what">B.S.</span><span class="where">Inha University</span></li>
+        <li class="ind" style="--yrs: 3"><span class="yr">2016</span><span class="bar"></span><span class="what">Display industry</span><span class="where">Development team</span></li>
+        <li class="ind" style="--yrs: 4"><span class="yr">2019</span><span class="bar"></span><span class="what">Start-up</span><span class="where"><span class="nw">Mass-production</span> technology</span></li>
+        <li class="edu" style="--yrs: 3.9"><span class="yr">2023</span><span class="yr yr-end">Present</span><span class="bar"></span><span class="what">Integrated <span class="nw">M.S.–Ph.D.</span></span><span class="where">UNIST</span></li>
+      </ol>
     </div>
   </div>
 </section>
