@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+  :root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>Young Je Yoon CV</title>
+<meta name="description" content="Young Je Yoon, integrated M.S.–Ph.D. student at UNIST. X-ray metrology of nanoscale patterns with CD-SAXS, and cross-lingual LLM agents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  /* Layout: sticky nav; hero = identity left, simulated CD-SAXS map right; to-scale career timeline; label-left / content-right sections. */
+  :root {
+    --paper: #FAF6EE;       /* oak white */
+    --paper-deep: #F1EADD;  /* placeholders */
+    --ink: #16213A;
+    --ink-soft: #5A6275;
+    --rule: #E5DDCF;
+    --rule-strong: #CFC4B0;
+    --navy: #214867;
+    --teal: #1F8A91;
+    --crimson: #B2182B;
+    --panel: #0B1022;       /* detector panel, identical in both themes */
+    --panel-ink: #C9D1E6;
+    --panel-rule: #3A4560;
+    --font-text: "STIX Two Text", "STIX Two", "Times New Roman", Georgia, serif;
+    --font-ui: "Archivo Narrow", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0F1522; --paper-deep: #182033;
+      --ink: #E5E7EC; --ink-soft: #A0A8B9;
+      --rule: #252E41; --rule-strong: #3A4559;
+      --navy: #9EBCE4; --teal: #55BEC5; --crimson: #F08A96;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0F1522; --paper-deep: #182033;
+    --ink: #E5E7EC; --ink-soft: #A0A8B9;
+    --rule: #252E41; --rule-strong: #3A4559;
+    --navy: #9EBCE4; --teal: #55BEC5; --crimson: #F08A96;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-text);
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+    z-index: 10; background: var(--paper);
+  }
+  a { color: var(--navy); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; }
+  h1, h2, h3 { text-wrap: balance; }
+  p { margin: 0; }
+  sup { line-height: 0; }
+
+  .wrap {
+    max-width: 1120px; margin: 0 auto;
+    padding-left: max(16px, 3vw, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, 3vw, env(safe-area-inset-right, 0px));
+  }
+
+  /* Nav */
+  .nav {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    background: var(--paper); border-bottom: 1px solid var(--rule);
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 56px; }
+  .brand { font-weight: 600; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; overflow-x: auto; min-width: 0; scrollbar-width: none; }
+  .nav li a {
+    display: block; padding: 6px 2px; font-family: var(--font-ui); font-size: 16px;
+    color: var(--ink-soft); text-decoration: none; white-space: nowrap;
+  }
+  .nav li a:hover { color: var(--navy); text-decoration: underline; }
+  .nav li a:focus-visible { outline-offset: -2px; }
+
+  /* Hero */
+  .hero { padding-block: 56px 64px; }
+  .hero > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 480px); gap: 48px 64px; align-items: start; }
+  .intro { min-width: 0; }
+  .id { display: flex; align-items: flex-end; gap: 20px; }
+  .name { min-width: 0; }
+  /* Replace the .photo div with: <img class="photo" src="data:image/jpeg;base64,..." alt="Young Je Yoon"> */
+  .photo {
+    flex: 0 0 auto; width: 84px; max-width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
+    border: 1px dashed var(--rule-strong); border-radius: 3px; background: var(--paper-deep);
+    display: grid; place-items: center; font: 13px/1.2 var(--font-ui); color: var(--ink-soft);
+  }
+  h1 { font-size: clamp(40px, 5.6vw, 64px); line-height: 1.02; letter-spacing: -0.015em; font-weight: 600; margin: 0; }
+  .role { font-family: var(--font-ui); font-size: 19px; color: var(--ink-soft); margin-top: 10px; }
+  .lead { font-size: 21px; line-height: 1.5; max-width: 30em; margin-top: 28px; text-wrap: pretty; }
+  .facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 20px; margin: 28px 0 0; font-size: 17px; }
+  .facts dt { font-family: var(--font-ui); font-size: 15px; color: var(--ink-soft); padding-top: 3px; }
+  .facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+  .copy {
+    margin-left: 10px; padding: 4px 9px; vertical-align: 2px;
+    font: 500 14px/1 var(--font-ui); color: var(--ink); background: transparent;
+    border: 1px solid var(--rule-strong); border-radius: 3px; cursor: pointer;
+  }
+  .copy:hover { border-color: var(--navy); color: var(--navy); }
+
+  /* Simulated CD-SAXS map */
+  .fig { margin: 0; min-width: 0; }
+  .panel { background: var(--panel); border: 1px solid var(--panel-rule); border-radius: 3px; overflow: hidden; }
+  #rsm { display: block; width: 100%; max-width: 100%; height: auto; }
+  .fig-cap {
+    display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: center;
+    margin-top: 14px; font-size: 15px; line-height: 1.5; color: var(--ink-soft);
+  }
+  .xsec { display: block; width: 100%; max-width: 120px; height: auto; }
+  .xs-sub { stroke: var(--ink-soft); stroke-width: 1.5; }
+  .xs-line { fill: var(--navy); fill-opacity: 0.18; stroke: var(--navy); stroke-width: 1.5; stroke-linejoin: round; }
+
+  /* Sections */
+  .sec { padding-block: 52px; border-top: 1px solid var(--rule); }
+  .sec > .wrap { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 20px 48px; }
+  .sec h2 {
+    margin: 0; font-style: italic; font-weight: 400; font-size: 26px; line-height: 1.2; color: var(--navy);
+    position: sticky; top: calc(env(safe-area-inset-top, 0px) + 80px); align-self: start;
+  }
+  .body { min-width: 0; display: flex; flex-direction: column; gap: 32px; }
+  ol.items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 32px; min-width: 0; }
+  .item { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 4px 24px; }
+  .item > div { min-width: 0; }
+  .when { font-family: var(--font-ui); font-size: 16px; color: var(--ink-soft); padding-top: 3px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  h3 { font-size: 20px; line-height: 1.35; font-weight: 600; margin: 0; }
+  .org { color: var(--ink-soft); margin-top: 2px; }
+  .note { margin-top: 8px; font-size: 17px; }
+
+  /* Timeline, drawn to scale in years */
+  .edu { --kind: var(--navy); }
+  .ind { --kind: var(--teal); }
+  .tl { list-style: none; margin: 0; padding: 0; display: flex; }
+  .tl li { flex: var(--yrs) 1 0%; min-width: 0; position: relative; display: flex; flex-direction: column; }
+  .tl .yr { font-family: var(--font-ui); font-size: 15px; line-height: 1.2; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .tl .yr-end { position: absolute; top: 0; right: 0; }
+  .tl .bar { height: 10px; margin: 8px 3px 12px 0; background: var(--kind); }
+  .tl li:last-child .bar { margin-right: 0; }
+  .tl .what { font-weight: 600; font-size: 17px; line-height: 1.3; padding-right: 12px; }
+  .tl .where { font-size: 15px; line-height: 1.35; color: var(--ink-soft); padding-right: 12px; margin-top: 2px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 20px; font-family: var(--font-ui); font-size: 15px; color: var(--ink-soft); }
+  .key { display: inline-block; width: 14px; height: 10px; margin-right: 6px; background: var(--kind); }
+
+  /* Research */
+  .statement { font-size: 21px; line-height: 1.55; max-width: 34em; text-wrap: pretty; }
+  .flag { margin-bottom: 10px; line-height: 1.4; }
+  .strands { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; }
+  .strands p { color: var(--ink-soft); margin-top: 6px; }
+  .tools { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 24px; margin: 12px 0 0; }
+  .tools dt { font-family: var(--font-ui); font-size: 16px; color: var(--ink-soft); padding-top: 2px; }
+  .tools dd { margin: 0; min-width: 0; }
+
+  /* Publications */
+  .me { color: var(--ink); font-weight: 600; }
+  .venue { margin-top: 6px; font-size: 17px; }
+
+  /* Items still to be filled in or confirmed */
+  .todo {
+    font: 500 14px/1.4 var(--font-ui); color: var(--crimson);
+    border: 1px dashed currentColor; border-radius: 3px; padding: 1px 6px;
+  }
+  .confirm { text-decoration: underline 1px dashed var(--crimson); text-underline-offset: 4px; }
+
+  footer { padding-block: 28px 56px; border-top: 1px solid var(--rule); font-family: var(--font-ui); font-size: 15px; color: var(--ink-soft); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; }
+
+  @media (max-width: 920px) {
+    .hero > .wrap { grid-template-columns: minmax(0, 1fr); }
+    .fig { max-width: 560px; }
+  }
+  @media (max-width: 760px) {
+    .sec { padding-block: 40px; }
+    .sec > .wrap { grid-template-columns: minmax(0, 1fr); }
+    .sec h2 { position: static; }
+    .strands { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .tl { flex-direction: column; }
+    .tl li {
+      display: grid; grid-template-columns: 56px 8px minmax(0, 1fr); grid-template-rows: auto auto 1fr;
+      column-gap: 14px; min-height: calc(var(--yrs) * 18px);
+    }
+    .tl .yr { grid-column: 1; grid-row: 1; }
+    .tl .yr-end { position: static; grid-column: 1; grid-row: 3; align-self: end; }
+    .tl .bar { grid-column: 2; grid-row: 1 / -1; height: auto; margin: 0 0 3px; }
+    .tl li:last-child .bar { margin: 0; }
+    .tl .what { grid-column: 3; grid-row: 1; padding: 0; }
+    .tl .where { grid-column: 3; grid-row: 2; padding: 0 0 12px; }
+  }
+  @media (max-width: 520px) {
+    .hero { padding-block: 32px 40px; }
+    .nav .brand { display: none; }
+    .lead, .statement { font-size: 19px; }
+    .item { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .fig-cap { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#top">Young Je Yoon</a>
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="intro">
+      <div class="id">
+        <div class="photo" aria-hidden="true">Photo</div>
+        <div class="name">
+          <h1>Young Je Yoon</h1>
+          <p class="role">Integrated M.S.–Ph.D. student, UNIST</p>
+        </div>
+      </div>
+      <p class="lead">I recover the cross-sections of nanoscale resist lines from X-ray scattering. I also study why multilingual LLM agents fail when the evidence they need switches language.</p>
+      <dl class="facts">
+        <dt>Advisor</dt>
+        <dd>Prof. Tae Joo Shin</dd>
+        <dt>School</dt>
+        <dd><span class="confirm" title="Name to confirm">Graduate School of Semiconductor Materials and Components</span>, UNIST</dd>
+        <dt>Email</dt>
+        <dd><a id="email-hero" href="mailto:yoonyoungje@unist.ac.kr">yoonyoungje@unist.ac.kr</a><button class="copy" type="button" data-copy="email-hero">Copy</button></dd>
+      </dl>
+    </div>
+
+    <figure class="fig">
+      <div class="panel">
+        <canvas id="rsm" width="480" height="472" role="img" aria-label="Simulated CD-SAXS reciprocal-space map. Vertical Bragg rods of a line grating fill a bow-tie region opened by rotating the sample to plus and minus 60 degrees."></canvas>
+      </div>
+      <figcaption class="fig-cap">
+        <svg class="xsec" viewBox="0 0 200 68" role="img" aria-label="Two trapezoidal lines on a substrate, repeating every 100 nm">
+          <line class="xs-sub" x1="0" y1="64" x2="200" y2="64"></line>
+          <polygon class="xs-line" points="25,64 33,4 67,4 75,64"></polygon>
+          <polygon class="xs-line" points="125,64 133,4 167,4 175,64"></polygon>
+        </svg>
+        <p>Simulated CD-SAXS map of a trapezoidal line 60 nm tall, 50 nm wide at the base and 34 nm at the top, repeated every 100 nm. Each column is the Bragg rod of one diffraction order, on a log intensity scale. Rotating the sample through <i>ω</i> = ±60° fills the bow-tie.</p>
+      </figcaption>
+    </figure>
+  </div>
+</header>
+
+<section class="sec" id="timeline" aria-labelledby="h-timeline">
+  <div class="wrap">
+    <h2 id="h-timeline">Timeline</h2>
+    <div class="body">
+      <ol class="tl" aria-label="Career from 2009 to the present, drawn to scale">
+        <li class="edu" style="--yrs: 7"><span class="yr">2009</span><span class="bar"></span><span class="what">B.S.</span><span class="where">Inha University</span></li>
+        <li class="ind" style="--yrs: 3"><span class="yr">2016</span><span class="bar"></span><span class="what">Display manufacturer</span><span class="where">Development team</span></li>
+        <li class="ind" style="--yrs: 4"><span class="yr">2019</span><span class="bar"></span><span class="what">Display startup</span><span class="where">Mass-production technology</span></li>
+        <li class="edu" style="--yrs: 3.9"><span class="yr">2023</span><span class="yr yr-end">Present</span><span class="bar"></span><span class="what">Integrated M.S.–Ph.D.</span><span class="where">UNIST</span></li>
+      </ol>
+      <p class="legend"><span><span class="key edu"></span>Education</span><span><span class="key ind"></span>Industry</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="research" aria-labelledby="h-research">
+  <div class="wrap">
+    <h2 id="h-research">Research</h2>
+    <div class="body">
+      <div class="statement">
+        <p class="flag"><span class="todo">draft, rewrite in your own words</span></p>
+        <p>My Ph.D. research is X-ray metrology for semiconductor patterning. I use transmission CD-SAXS to measure the cross-sectional shapes of nanoscale line patterns. I also built K-CrossHop, a benchmark for Korean–English agentic RAG, and found that most of the cross-lingual loss comes from failing to retrieve answer-bearing evidence.</p>
+      </div>
+      <div class="strands">
+        <div>
+          <h3>X-ray metrology of nanoscale patterns</h3>
+          <p>CD-SAXS metrology, semiconductor micropatterns, EUV interference lithography</p>
+        </div>
+        <div>
+          <h3>Cross-lingual LLM agents</h3>
+          <p>Agentic RAG, cross-lingual retrieval, LLM faithfulness evaluation</p>
+        </div>
+      </div>
+      <div>
+        <h3>Methods and tools</h3>
+        <dl class="tools">
+          <dt>Measurement</dt>
+          <dd>X-ray scattering analysis, synchrotron beamline instrumentation, SEM / FIB</dd>
+          <dt>Fabrication</dt>
+          <dd>EBL, ICP-RIE</dd>
+          <dt>Computation</dt>
+          <dd>Python, machine learning, LLM evaluation</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="publications" aria-labelledby="h-publications">
+  <div class="wrap">
+    <h2 id="h-publications">Publications</h2>
+    <div class="body">
+      <ol class="items">
+        <li class="item">
+          <div class="when">2027</div>
+          <div>
+            <h3>K-CrossHop: A Two-Stage Decomposition of Query-Side Cross-Lingual Failures in Korean–English Agentic RAG</h3>
+            <p class="org"><span class="me">Young Je Yoon</span>, Tae Joo Shin<sup>†</sup></p>
+            <p class="venue"><i>Findings of the Association for Computational Linguistics: EACL 2027</i>. Accepted, to appear.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="experience" aria-labelledby="h-experience">
+  <div class="wrap">
+    <h2 id="h-experience">Industry experience</h2>
+    <ol class="items">
+      <li class="item">
+        <div class="when">2019–2023</div>
+        <div>
+          <h3>Mass-production technology development</h3>
+          <p class="org">Startup development team</p>
+        </div>
+      </li>
+      <li class="item">
+        <div class="when">2016–2019</div>
+        <div>
+          <h3>Mass-production technology development</h3>
+          <p class="org">Development team, display manufacturer</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="education" aria-labelledby="h-education">
+  <div class="wrap">
+    <h2 id="h-education">Education</h2>
+    <ol class="items">
+      <li class="item">
+        <div class="when">2023–present</div>
+        <div>
+          <h3>Integrated M.S.–Ph.D.</h3>
+          <p class="org">UNIST, <span class="confirm" title="Name to confirm">Graduate School of Semiconductor Materials and Components</span></p>
+          <p class="note">Advisor: Prof. Tae Joo Shin</p>
+        </div>
+      </li>
+      <li class="item">
+        <div class="when">2009–2016</div>
+        <div>
+          <h3>B.S., <span class="confirm" title="Name to confirm">Organic and Applied Materials Engineering</span></h3>
+          <p class="org">Inha University</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="contact" aria-labelledby="h-contact">
+  <div class="wrap">
+    <h2 id="h-contact">Contact</h2>
+    <dl class="facts" style="margin: 0">
+      <dt>Email</dt>
+      <dd><a id="email-contact" href="mailto:yoonyoungje@unist.ac.kr">yoonyoungje@unist.ac.kr</a><button class="copy" type="button" data-copy="email-contact">Copy</button></dd>
+      <dt>Address</dt>
+      <dd>UNIST, Ulsan, Republic of Korea</dd>
+    </dl>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Young Je Yoon</span>
+    <span>Last updated November 2026</span>
+  </div>
+</footer>
+
+<script>
+  // Copy buttons: clipboard when allowed, otherwise select the address so it can be copied by hand.
+  document.querySelectorAll("button.copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var src = document.getElementById(btn.getAttribute("data-copy"));
+      var text = src.textContent.trim();
+      function show(label) {
+        btn.textContent = label;
+        setTimeout(function () { btn.textContent = "Copy"; }, 1800);
+      }
+      function selectText() {
+        var range = document.createRange();
+        range.selectNodeContents(src);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        show("Selected");
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { show("Copied"); }, selectText);
+      } else {
+        selectText();
+      }
+    });
+  });
+
+  // Simulated CD-SAXS reciprocal-space map (q_y horizontal = pitch direction, q_z vertical = height).
+  (function () {
+    var canvas = document.getElementById("rsm");
+    if (!canvas || !canvas.getContext) return;
+    var panel = canvas.parentNode;
+    var ctx = canvas.getContext("2d");
+    var css = getComputedStyle(document.documentElement);
+    var col = {
+      panel: css.getPropertyValue("--panel").trim() || "#0B1022",
+      ink: css.getPropertyValue("--panel-ink").trim() || "#C9D1E6",
+      rule: css.getPropertyValue("--panel-rule").trim() || "#3A4560"
+    };
+
+    // Simulated grating (nm): symmetric trapezoidal line, not a measured sample.
+    var PITCH = 100, HEIGHT = 60, CD_BOT = 50, CD_TOP = 34, NSLAB = 40, SIGMA_DW = 1.0;
+    var NMAX = 9;                        // orders 1..9 on each side, zeroth order excluded
+    var QY_MAX = 0.62, QZ_MAX = 0.6;     // plotted range (nm^-1), same scale on both axes
+    var SIGMA_QY = 0.005;                // rod width from instrument resolution (nm^-1)
+    var DECADES = 4.5;                   // log-intensity span of the color scale
+    var OMEGA_START = 10, OMEGA_END = 60, DURATION = 1500;   // degrees, ms
+    var M = { l: 48, r: 12, t: 12, b: 44 };                    // plot margins (CSS px)
+    var TICKS = [-0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6];
+    var UI = '"Archivo Narrow", "Arial Narrow", Arial, sans-serif';
+    var SERIF = '"STIX Two Text", "Times New Roman", serif';
+
+    var G = 2 * Math.PI / PITCH, DZ = HEIGHT / NSLAB;
+    var slabZ = [], slabW = [];
+    for (var j = 0; j < NSLAB; j++) {
+      var z = (j + 0.5) * DZ;
+      slabZ.push(z);
+      slabW.push(CD_BOT + (CD_TOP - CD_BOT) * z / HEIGHT);
+    }
+
+    function sinc(x) { return Math.abs(x) < 1e-9 ? 1 : Math.sin(x) / x; }
+    function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+
+    // |F|^2 of diffraction order n at height-direction wavevector qz, with Debye-Waller damping.
+    function rodIntensity(n, qz) {
+      var qy = n * G, re = 0, im = 0, sz = DZ * sinc(qz * DZ / 2);
+      for (var k = 0; k < NSLAB; k++) {
+        var a = slabW[k] * sinc(qy * slabW[k] / 2) * sz;
+        re += a * Math.cos(qz * slabZ[k]);
+        im += a * Math.sin(qz * slabZ[k]);
+      }
+      return (re * re + im * im) * Math.exp(-SIGMA_DW * SIGMA_DW * (qy * qy + qz * qz));
+    }
+
+    // Full map as log intensity in the jet colormap, rendered once into an offscreen canvas.
+    function buildImage(w, h) {
+      var off = document.createElement("canvas");
+      off.width = w; off.height = h;
+      var octx = off.getContext("2d");
+      var img = octx.createImageData(w, h), px = img.data;
+      var rows = [], imax = 0, x, y, n;
+      for (y = 0; y < h; y++) {
+        var qzr = QZ_MAX - (y + 0.5) / h * 2 * QZ_MAX;
+        var row = new Float64Array(NMAX + 1);
+        for (n = 1; n <= NMAX; n++) {          // |F|^2 is even in n for a symmetric line
+          row[n] = rodIntensity(n, qzr);
+          if (row[n] > imax) imax = row[n];
+        }
+        rows.push(row);
+      }
+      var twoS2 = 2 * SIGMA_QY * SIGMA_QY;
+      for (y = 0; y < h; y++) {
+        var qz = QZ_MAX - (y + 0.5) / h * 2 * QZ_MAX;
+        for (x = 0; x < w; x++) {
+          var qy = -QY_MAX + (x + 0.5) / w * 2 * QY_MAX;
+          var q = Math.sqrt(qy * qy + qz * qz);
+          var v = imax * 3e-4 * Math.exp(-q / 0.25);     // weak diffuse background
+          n = Math.abs(Math.round(qy / G));
+          if (n >= 1 && n <= NMAX) {
+            var d = Math.abs(qy) - n * G;
+            v += rows[y][n] * Math.exp(-d * d / twoS2);
+          }
+          var t = clamp01((Math.log(v / imax) / Math.LN10 + DECADES) / DECADES);
+          var i = (y * w + x) * 4;
+          px[i] = 255 * clamp01(1.5 - Math.abs(4 * t - 3));
+          px[i + 1] = 255 * clamp01(1.5 - Math.abs(4 * t - 2));
+          px[i + 2] = 255 * clamp01(1.5 - Math.abs(4 * t - 1));
+          px[i + 3] = 255;
+        }
+      }
+      octx.putImageData(img, 0, 0);
+      return off;
+    }
+
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    var image = null, omega = OMEGA_END, lastW = 0;
+
+    function fmt(v) {
+      if (Math.abs(v) < 1e-9) return "0";
+      return (v < 0 ? "−" : "") + Math.abs(v).toFixed(1);
+    }
+
+    // Draw text pieces [text, font, dy] in a row; centered on (x, y) unless left is true.
+    function runs(parts, x, y, rotate, left) {
+      var widths = [], total = 0;
+      parts.forEach(function (p) {
+        ctx.font = p[1];
+        var w = ctx.measureText(p[0]).width;
+        widths.push(w); total += w;
+      });
+      ctx.save();
+      ctx.translate(x, y);
+      if (rotate) ctx.rotate(-Math.PI / 2);
+      ctx.textAlign = "left";
+      ctx.textBaseline = "alphabetic";
+      var cx = left ? 0 : -total / 2;
+      parts.forEach(function (p, i) { ctx.font = p[1]; ctx.fillText(p[0], cx, p[2]); cx += widths[i]; });
+      ctx.restore();
+      return total;
+    }
+
+    function draw() {
+      var s = dpr, W = canvas.width, H = canvas.height;
+      var x0 = M.l * s, y0 = M.t * s, pw = W - (M.l + M.r) * s, ph = H - (M.t + M.b) * s;
+      function X(qy) { return x0 + (qy + QY_MAX) / (2 * QY_MAX) * pw; }
+      function Y(qz) { return y0 + (QZ_MAX - qz) / (2 * QZ_MAX) * ph; }
+      var tan = Math.tan(omega * Math.PI / 180);
+
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.fillStyle = col.panel;
+      ctx.fillRect(0, 0, W, H);
+
+      // Measured region |qz| <= |qy| tan(omega): the bow-tie swept by rotating the sample.
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(x0, y0, pw, ph);
+      ctx.clip();
+      ctx.beginPath();
+      [1, -1].forEach(function (side) {
+        ctx.moveTo(X(0), Y(0));
+        ctx.lineTo(X(side * QY_MAX), Y(QY_MAX * tan));
+        ctx.lineTo(X(side * QY_MAX), Y(-QY_MAX * tan));
+        ctx.closePath();
+      });
+      ctx.clip();
+      if (image) ctx.drawImage(image, x0, y0, pw, ph);
+      ctx.restore();
+
+      // Wedge edges
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(x0, y0, pw, ph);
+      ctx.clip();
+      ctx.strokeStyle = col.ink;
+      ctx.globalAlpha = 0.4;
+      ctx.lineWidth = s;
+      ctx.setLineDash([3 * s, 4 * s]);
+      ctx.beginPath();
+      ctx.moveTo(X(-QY_MAX), Y(QY_MAX * tan)); ctx.lineTo(X(QY_MAX), Y(-QY_MAX * tan));
+      ctx.moveTo(X(-QY_MAX), Y(-QY_MAX * tan)); ctx.lineTo(X(QY_MAX), Y(QY_MAX * tan));
+      ctx.stroke();
+      ctx.restore();
+
+      // Frame, ticks, tick labels
+      ctx.strokeStyle = col.rule;
+      ctx.lineWidth = s;
+      ctx.strokeRect(x0 + 0.5 * s, y0 + 0.5 * s, pw - s, ph - s);
+      ctx.strokeStyle = col.ink;
+      ctx.fillStyle = col.ink;
+      ctx.font = (11 * s) + "px " + UI;
+      ctx.beginPath();
+      ctx.textAlign = "center";
+      ctx.textBaseline = "top";
+      TICKS.forEach(function (v) {
+        var x = X(v);
+        ctx.moveTo(x, y0 + ph); ctx.lineTo(x, y0 + ph + 4 * s);
+        ctx.fillText(fmt(v), x, y0 + ph + 7 * s);
+      });
+      ctx.textAlign = "right";
+      ctx.textBaseline = "middle";
+      TICKS.forEach(function (v) {
+        var y = Y(v);
+        ctx.moveTo(x0, y); ctx.lineTo(x0 - 4 * s, y);
+        ctx.fillText(fmt(v), x0 - 7 * s, y);
+      });
+      ctx.stroke();
+
+      // Axis titles: q_y (nm^-1), q_z (nm^-1)
+      var big = "italic " + (14 * s) + "px " + SERIF, sub = "italic " + (10 * s) + "px " + SERIF;
+      var reg = (13 * s) + "px " + SERIF, sup = (9 * s) + "px " + SERIF;
+      function title(letter) {
+        return [["q", big, 0], [letter, sub, 3 * s], [" (nm", reg, 0], ["−1", sup, -5 * s], [")", reg, 0]];
+      }
+      runs(title("y"), x0 + pw / 2, H - 8 * s, false, false);
+      runs(title("z"), 14 * s, y0 + ph / 2, true, false);
+
+      // Rotation readout on a small backing so it stays legible over the rods
+      var label = [["ω", big, 0], [" = ±" + Math.round(omega) + "°", reg, 0]];
+      ctx.fillStyle = col.panel;
+      ctx.globalAlpha = 0.85;
+      ctx.fillRect(x0 + 6 * s, y0 + 6 * s, 74 * s, 22 * s);
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = col.ink;
+      runs(label, x0 + 12 * s, y0 + 22 * s, false, true);
+    }
+
+    function layout() {
+      var cssW = panel.clientWidth;
+      if (!cssW || cssW === lastW) return;
+      lastW = cssW;
+      var pw = cssW - M.l - M.r;
+      var ph = Math.round(pw * QZ_MAX / QY_MAX);
+      var cssH = ph + M.t + M.b;
+      canvas.style.height = cssH + "px";
+      canvas.width = Math.round(cssW * dpr);
+      canvas.height = Math.round(cssH * dpr);
+      image = buildImage(Math.max(1, Math.round(pw * dpr)), Math.max(1, Math.round(ph * dpr)));
+      draw();
+    }
+
+    if (window.ResizeObserver) new ResizeObserver(layout).observe(panel);
+    else window.addEventListener("resize", layout);
+    layout();
+
+    // One load-time sweep of the rotation angle, as the map is built angle by angle in a measurement.
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce && !document.hidden && window.requestAnimationFrame) {
+      omega = OMEGA_START;
+      draw();
+      var t0 = null;
+      var step = function (ts) {
+        if (t0 === null) t0 = ts;
+        var u = Math.min(1, (ts - t0) / DURATION);
+        omega = OMEGA_START + (OMEGA_END - OMEGA_START) * (1 - Math.pow(1 - u, 3));
+        draw();
+        if (u < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  })();
+</script>
+</body>
+</html>
