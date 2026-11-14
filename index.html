@@ -381,7 +381,7 @@ footer { padding-block: var(--space-2xl) var(--space-3xl); }
     var QY_MAX = 0.62, QZ_MAX = 0.6;     // plotted range (nm^-1), same scale on both axes
     var SIGMA_QY = 0.005;                // rod width from instrument resolution (nm^-1)
     var DECADES = 4.5;                   // log-intensity span of the color scale
-    var OMEGA_START = 10, OMEGA_END = 60, DURATION = 1500;   // degrees, ms
+    var OMEGA_START = -60, OMEGA_END = 60, DURATION = 2400;  // degrees, ms
     var M = { l: 48, r: 12, t: 12, b: 44 };                    // plot margins (CSS px)
     var TICKS = [-0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6];
     var MONO = token("--font-outlier");  // tick figures and the rotation readout
@@ -481,13 +481,15 @@ footer { padding-block: var(--space-2xl) var(--space-3xl); }
       var x0 = M.l * s, y0 = M.t * s, pw = W - (M.l + M.r) * s, ph = H - (M.t + M.b) * s;
       function X(qy) { return x0 + (qy + QY_MAX) / (2 * QY_MAX) * pw; }
       function Y(qz) { return y0 + (QZ_MAX - qz) / (2 * QZ_MAX) * ph; }
-      var tan = Math.tan(omega * Math.PI / 180);
+      // A sample angle w measures the line qz = qy tan(w) through the origin.
+      var tLo = Math.tan(OMEGA_START * Math.PI / 180), tHi = Math.tan(omega * Math.PI / 180);
 
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.fillStyle = col.panel;
       ctx.fillRect(0, 0, W, H);
 
-      // Measured region |qz| <= |qy| tan(omega): the bow-tie swept by rotating the sample.
+      // Measured region: every line from OMEGA_START up to the current omega, so the
+      // bow-tie fills like a wiper (right half upward, left half downward).
       ctx.save();
       ctx.beginPath();
       ctx.rect(x0, y0, pw, ph);
@@ -495,15 +497,15 @@ footer { padding-block: var(--space-2xl) var(--space-3xl); }
       ctx.beginPath();
       [1, -1].forEach(function (side) {
         ctx.moveTo(X(0), Y(0));
-        ctx.lineTo(X(side * QY_MAX), Y(QY_MAX * tan));
-        ctx.lineTo(X(side * QY_MAX), Y(-QY_MAX * tan));
+        ctx.lineTo(X(side * QY_MAX), Y(side * QY_MAX * tLo));
+        ctx.lineTo(X(side * QY_MAX), Y(side * QY_MAX * tHi));
         ctx.closePath();
       });
       ctx.clip();
       if (image) ctx.drawImage(image, x0, y0, pw, ph);
       ctx.restore();
 
-      // Wedge edges
+      // The starting edge and the current measuring line
       ctx.save();
       ctx.beginPath();
       ctx.rect(x0, y0, pw, ph);
@@ -513,8 +515,9 @@ footer { padding-block: var(--space-2xl) var(--space-3xl); }
       ctx.lineWidth = s;
       ctx.setLineDash([3 * s, 4 * s]);
       ctx.beginPath();
-      ctx.moveTo(X(-QY_MAX), Y(QY_MAX * tan)); ctx.lineTo(X(QY_MAX), Y(-QY_MAX * tan));
-      ctx.moveTo(X(-QY_MAX), Y(-QY_MAX * tan)); ctx.lineTo(X(QY_MAX), Y(QY_MAX * tan));
+      [tLo, tHi].forEach(function (t) {
+        ctx.moveTo(X(-QY_MAX), Y(-QY_MAX * t)); ctx.lineTo(X(QY_MAX), Y(QY_MAX * t));
+      });
       ctx.stroke();
       ctx.restore();
 
@@ -551,8 +554,11 @@ footer { padding-block: var(--space-2xl) var(--space-3xl); }
       runs(title("y"), x0 + pw / 2, H - 8 * s, false, false);
       runs(title("z"), 14 * s, y0 + ph / 2, true, false);
 
-      // Rotation readout on a small backing so it stays legible over the rods
-      var label = [["ω", big, 0], [" = ±" + Math.round(omega) + "°", (12 * s) + "px " + MONO, 0]];
+      // Rotation readout on a small backing so it stays legible over the rods:
+      // the current angle during the sweep, the full range once it is done.
+      var deg = Math.round(omega);
+      var angle = omega >= OMEGA_END ? "±" + OMEGA_END : (deg < 0 ? "−" : deg > 0 ? "+" : "") + Math.abs(deg);
+      var label = [["ω", big, 0], [" = " + angle + "°", (12 * s) + "px " + MONO, 0]];
       ctx.fillStyle = col.panel;
       ctx.globalAlpha = 0.85;
       ctx.fillRect(x0 + 6 * s, y0 + 6 * s, 86 * s, 22 * s);
@@ -579,7 +585,7 @@ footer { padding-block: var(--space-2xl) var(--space-3xl); }
     else window.addEventListener("resize", layout);
     layout();
 
-    // One load-time sweep of the rotation angle, as the map is built angle by angle in a measurement.
+    // One load-time sweep of the rotation angle from -60 to +60 degrees, in the order a measurement takes the frames.
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!reduce && !document.hidden && window.requestAnimationFrame) {
       omega = OMEGA_START;
