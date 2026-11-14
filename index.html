@@ -108,6 +108,7 @@
   h1 { font-size: clamp(40px, 5.6vw, 64px); line-height: 1.02; letter-spacing: -0.015em; font-weight: 600; margin: 0; }
   .role { font-family: var(--font-ui); font-size: 19px; color: var(--ink-soft); margin-top: 10px; }
   .lead { font-size: 21px; line-height: 1.5; max-width: 30em; margin-top: 28px; text-wrap: pretty; }
+  .lead p + p { margin-top: 10px; }
   .facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 20px; margin: 28px 0 0; font-size: 17px; }
   .facts dt { font-family: var(--font-ui); font-size: 15px; color: var(--ink-soft); padding-top: 3px; }
   .facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
@@ -240,7 +241,10 @@
           <p class="role">Integrated <span class="nw">M.S.–Ph.D.</span> student, UNIST</p>
         </div>
       </div>
-      <p class="lead">I recover the cross-sections of nanoscale resist lines from <span class="nw">X-ray</span> scattering. I also study why multilingual LLM agents fail when the evidence they need switches language.</p>
+      <div class="lead">
+        <p>My research focuses on characterizing nanoscale structures using <span class="nw">X-ray</span> scattering.</p>
+        <p>My work in large language models investigates how language differences affect information retrieval and reasoning.</p>
+      </div>
       <dl class="facts">
         <dt>Advisor</dt>
         <dd>Prof.&nbsp;Tae&nbsp;Joo&nbsp;Shin</dd>
