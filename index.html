@@ -3,251 +3,268 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>
-  :root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
-  img { max-width: 100%; }
-  [hidden] { display: none !important; }
-</style>
 <title>Young Je Yoon CV</title>
 <meta name="description" content="Young Je Yoon is an integrated M.S.–Ph.D. student at UNIST, researching X-ray scattering metrology for semiconductor nanostructures and cross-lingual retrieval in large language models.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* Layout: sticky nav; hero = identity left, simulated CD-SAXS map right; to-scale career timeline; label-left / content-right sections. */
-  :root {
-    --paper: #F7F6F1;       /* oat white */
-    --paper-deep: #ECEDE7;
-    --ink: #21282F;
-    --ink-soft: #515D67;
-    --rule: #D6DAD7;
-    --rule-strong: #B5BEB0;
-    --navy: #2D4D6B;
-    --teal: #777251;
-    --panel: #0B1022;       /* detector panel, identical in both themes */
-    --panel-ink: #C9D1E6;
-    --panel-rule: #3A4560;
-    --font-text: "STIX Two Text", "STIX Two", "Times New Roman", Georgia, serif;
-    --font-ui: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #0F1522; --paper-deep: #182033;
-      --ink: #E5E7EC; --ink-soft: #A0A8B9;
-      --rule: #252E41; --rule-strong: #3A4559;
-      --navy: #9EBCE4; --teal: #55BEC5;
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #0F1522; --paper-deep: #182033;
-    --ink: #E5E7EC; --ink-soft: #A0A8B9;
-    --rule: #252E41; --rule-strong: #3A4559;
-    --navy: #9EBCE4; --teal: #55BEC5;
-    color-scheme: dark;
-  }
+/* Hallmark · shape: Record (custom; an Index hero over a split, a grid, an ink band and a letter close) · genre: editorial · theme: Almanac (deal 1/3, seed personal-academic-phd-student-5a52·41740243·2026-11-14·r0) · redesign: full · draw: 1ef70c, Manifesto swapped for Record
+ * hero: Index · nav: edge-aligned, the name left and five section links right, no button · footer: letter close · imagery: the product built (the simulated CD-SAXS map on canvas), no photographs · signature: the career record as an almanac table, its years drawn to scale, the current row in magenta
+ * job: hire · copy: verbatim · axes: mid/grotesk-sans/chromatic-magenta · posture: restrained · contrast: static only · fold: static only · v2.0.0 */
+/* Hallmark · pre-emit critique: P3 H4 E4 S4 R4 V4 · weakest: P, a CV argues nothing; the drawn Manifesto was swapped for the record table and the map, which carry the page on facts alone */
+/* Hallmark · dropped h2 Industry experience, Education · now the row labels of the Timeline sheet in the hero, every role, place and year kept */
+/* Hallmark · finish-review: subagent · fix · 5 findings · 5 resolved · gap: the CD-SAXS map left the first screen for the record, the owner's call */
+@import url("./tokens.css");
+@import url("./base.css");
 
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--font-text);
-    font-size: 18px;
-    line-height: 1.6;
-    -webkit-text-size-adjust: 100%;
-  }
-  body::before {
-    content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
-    z-index: 10; background: var(--paper);
-  }
-  a { color: var(--navy); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-  a:hover { text-decoration-thickness: 2px; }
-  :focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; }
-  h1, h2, h3 { text-wrap: balance; }
-  p, dd, figcaption { text-wrap: pretty; }
-  .nw { white-space: nowrap; }
-  p { margin: 0; }
-  sup { line-height: 0; }
+:root {
+  /* The map's detector panel, read by the canvas script */
+  --panel: var(--color-ink);
+  --panel-ink: var(--color-sheet);
+  --panel-rule: var(--color-muted);
+}
 
-  .wrap {
-    max-width: 1180px; margin: 0 auto;
-    padding-left: max(16px, 3vw, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, 3vw, env(safe-area-inset-right, 0px));
-  }
+body { font-size: 1.125rem; color: var(--color-ink-2); }
+h1, h2, h3 { color: var(--color-ink); }
+a { color: var(--color-ink); text-decoration-color: var(--color-accent); text-underline-offset: 0.15em; }
+a:hover { text-decoration-thickness: 2px; }
+.nw { white-space: nowrap; }
+sup { line-height: 0; }
 
-  /* Nav */
-  .nav {
-    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
-    background: var(--paper); border-bottom: 1px solid var(--rule);
-  }
-  .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 60px; }
-  .brand { font-size: 20px; font-weight: 600; color: var(--ink); text-decoration: none; white-space: nowrap; }
-  .nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; overflow-x: auto; min-width: 0; scrollbar-width: none; }
-  .nav li a {
-    display: block; padding: 8px 2px; font-family: var(--font-ui); font-size: 14px; font-weight: 500;
-    color: var(--ink-soft); text-decoration: none; white-space: nowrap;
-  }
-  .nav li a:hover { color: var(--navy); text-decoration: underline; }
-  .nav li a:focus-visible { outline-offset: -2px; }
+.grid12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); }
 
-  /* Hero */
-  .hero { padding-block: clamp(40px, 6vw, 80px) clamp(40px, 5vw, 64px); }
-  .hero > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 32px clamp(36px, 6vw, 84px); align-items: start; }
-  .intro { min-width: 0; padding-top: 14px; }
-  h1 { font-size: clamp(39px, 5.35vw, 72px); line-height: 1; letter-spacing: -0.035em; font-weight: 600; margin: 0; }
-  .role { font-family: var(--font-ui); font-size: 15px; font-weight: 500; color: var(--navy); margin-top: 14px; }
-  .lead { font-size: 23px; line-height: 1.43; max-width: 24em; margin-top: 30px; text-wrap: pretty; }
-  .lead p + p { margin-top: 14px; }
-  .facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 20px; margin: 28px 0 0; font-size: 17px; }
-  .facts dt { font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft); padding-top: 3px; }
-  .facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
-  .copy {
-    padding: 4px 9px;
-    font: 500 14px/1 var(--font-ui); color: var(--ink); background: transparent;
-    border: 1px solid var(--rule-strong); border-radius: 3px; cursor: pointer;
-  }
-  .copy:hover { border-color: var(--navy); color: var(--navy); }
-  .facts dd.mail { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+/* Nav: one quiet line, sticky */
+.nav { position: sticky; top: 0; z-index: var(--z-sticky-nav); background: var(--color-paper); border-bottom: var(--rule-hair) solid var(--color-rule); }
+.nav .container { display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); min-height: 64px; }
+.brand { font: 600 var(--text-lg)/1 var(--font-display); letter-spacing: var(--tracking-display); color: var(--color-ink); text-decoration: none; white-space: nowrap; }
+.nav ul { display: flex; gap: var(--space-lg); list-style: none; margin: 0; padding: 0; overflow-x: auto; min-width: 0; scrollbar-width: none; }
+.nav li a { display: block; padding-block: var(--space-xs); font: 500 var(--text-md)/1.2 var(--font-body); color: var(--color-muted); text-decoration: none; white-space: nowrap; }
+.nav li a:hover { color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-accent); }
 
-  /* Simulated CD-SAXS map */
-  .fig { margin: 0; min-width: 0; padding: 12px; background: var(--paper-deep); }
-  .panel { background: var(--panel); overflow: hidden; }
-  #rsm { display: block; width: 100%; max-width: 100%; height: auto; }
-  .fig-cap {
-    display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; align-items: center;
-    margin: 12px 4px 2px; font-size: 14px; line-height: 1.45; color: var(--ink-soft);
-  }
-  .xsec { display: block; width: 100%; max-width: 120px; height: auto; }
-  .xs-sub { stroke: var(--ink-soft); stroke-width: 1.5; }
-  .xs-line { fill: var(--navy); fill-opacity: 0.18; stroke: var(--navy); stroke-width: 1.5; stroke-linejoin: round; }
+/* Hero: the name, two lines about the work, then the record */
+.hero { padding-block: var(--space-2xl) var(--space-xl); }
+.hero-head { row-gap: var(--space-xl); align-items: end; }
+.hero-id { grid-column: 1 / span 6; }
+.hero-about { grid-column: 7 / span 6; display: flex; flex-direction: column; gap: var(--space-lg); }
+h1 { font-size: var(--text-display); letter-spacing: -0.035em; line-height: 0.95; }
+.role { margin-top: var(--space-md); font-size: var(--text-lead); line-height: 1.35; color: var(--color-muted); }
+.lead p + p { margin-top: var(--space-sm); }
+.facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--space-lg); row-gap: var(--space-xs); align-items: center; margin: 0; }
+.facts dt { font: 500 var(--text-sm)/1.3 var(--font-body); color: var(--color-muted); }
+.facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs) var(--space-sm); }
 
-  /* Sections */
-  .sec { padding-block: 52px; border-top: 1px solid var(--rule); }
-  .sec > .wrap { display: grid; grid-template-columns: 208px minmax(0, 1fr); gap: 20px 36px; }
-  #h-expertise, #h-experience { white-space: nowrap; }
-  .sec h2 {
-    margin: 0; font-weight: 600; font-size: 23px; letter-spacing: -0.02em; line-height: 1.2; color: var(--navy);
-    position: sticky; top: calc(env(safe-area-inset-top, 0px) + 80px); align-self: start;
-  }
-  .body { min-width: 0; display: flex; flex-direction: column; gap: 32px; }
-  ol.items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 32px; min-width: 0; }
-  .item { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 4px 24px; }
-  .item > div { min-width: 0; }
-  .when { font-family: var(--font-ui); font-size: 16px; color: var(--ink-soft); padding-top: 3px; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  h3 { font-size: 20px; line-height: 1.35; font-weight: 600; margin: 0; }
-  .org { color: var(--ink-soft); margin-top: 2px; }
-  .note { margin-top: 8px; font-size: 17px; }
+.copy {
+  display: inline-flex; align-items: center; min-height: 44px; padding-inline: var(--space-md);
+  border: var(--rule-hair) solid var(--color-ink); border-radius: var(--radius-pill);
+  background: transparent; color: var(--color-ink); font: 500 var(--text-sm)/1 var(--font-display);
+  white-space: nowrap; cursor: pointer; transition: background-color var(--dur-short) var(--ease-out);
+}
+.copy:hover { background: var(--color-paper-2); }
+.copy:active { transform: translateY(1px); }
+.copy:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
 
-  /* Timeline, drawn to scale in years */
-  .edu { --kind: var(--navy); }
-  .ind { --kind: var(--teal); }
-  .tl { list-style: none; margin: 0; padding: 0; display: flex; }
-  .tl li { flex: var(--yrs) 1 0%; min-width: 0; position: relative; display: flex; flex-direction: column; }
-  .tl .yr { font-family: var(--font-ui); font-size: 15px; line-height: 1.2; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-  .tl .yr-end { position: absolute; top: 0; right: 0; }
-  .tl .bar { height: 5px; margin: 8px 3px 12px 0; background: var(--kind); }
-  .tl li:last-child .bar { margin-right: 0; }
-  .tl .what { font-weight: 600; font-size: 17px; line-height: 1.3; padding-right: 12px; }
-  .tl .where { font-size: 15px; line-height: 1.35; color: var(--ink-soft); padding-right: 12px; margin-top: 2px; white-space: nowrap; }
-  /* The timeline spans the full width, heading above, so short segments have room for their labels */
-  #timeline > .wrap { grid-template-columns: minmax(0, 1fr); }
-  #timeline h2 { position: static; }
+/* The record: printed on the sheet, years in mono, spans drawn to scale */
+.sheet { background: var(--color-sheet); border-top: var(--rule-bar) solid var(--color-ink); }
+.record-sheet { margin-top: var(--space-xl); padding: var(--space-md) var(--space-lg) var(--space-xs); }
+.sheet-head { font-size: var(--text-title); }
+.record { width: 100%; border-collapse: collapse; --from: 2009; --range: 17.9; }
+.record th, .record td { padding: var(--space-sm) var(--space-lg) var(--space-sm) 0; text-align: left; vertical-align: middle; font-weight: 400; }
+.record thead th { padding-block: var(--space-xs); border-bottom: var(--rule-bar) solid var(--color-rule-2); }
+.record tbody tr + tr > * { border-top: var(--rule-hair) solid var(--color-rule); }
+.record .yrs { width: 1%; white-space: nowrap; font: 400 var(--text-md)/1.3 var(--font-outlier); font-variant-numeric: tabular-nums; color: var(--color-ink); }
+.record .kind { display: block; margin-top: var(--space-3xs); font: 500 var(--text-sm)/1.3 var(--font-body); color: var(--color-muted); }
+.record .what { white-space: nowrap; font: 500 var(--text-lg)/1.3 var(--font-body); color: var(--color-ink); }
+.record .where { color: var(--color-muted); }
+.record .span { width: 22%; padding-right: 0; }
+.axis { display: flex; justify-content: space-between; font: 400 var(--text-sm)/1.3 var(--font-outlier); font-variant-numeric: tabular-nums; color: var(--color-muted); }
+/* Mono sets numerals only; the words beside them stay in the body face */
+.word { font-family: var(--font-body); font-weight: 500; }
+.track { position: relative; display: block; height: 12px; }
+.track::before { content: ""; position: absolute; inset-inline: 0; top: 50%; border-top: var(--rule-hair) solid var(--color-rule); }
+.bar {
+  position: absolute; top: 0; bottom: 0; background: var(--color-ink-2);
+  left: calc((var(--s) - var(--from)) / var(--range) * 100%);
+  width: calc((var(--e) - var(--s)) / var(--range) * 100%);
+}
+.record .now .bar { background: var(--color-accent); }
 
-  /* Research */
-  #research { border-top-color: var(--navy); }
-  #research .body { gap: 28px; }
-  .area h3 { font-size: clamp(22px, 2.3vw, 27px); line-height: 1.2; letter-spacing: -0.02em; text-wrap: wrap; }
-  .area p { margin-top: 12px; max-width: 38em; }
-  .area + .area { padding-top: 28px; border-top: 1px solid var(--rule); }
-  .tools { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 24px; margin: 0; }
-  .tools dt { font-family: var(--font-ui); font-size: 16px; color: var(--ink-soft); padding-top: 2px; }
-  .tools dd { margin: 0; min-width: 0; }
+/* Research: the two areas beside the map */
+.research { padding-block: var(--section-gap); }
+.research .grid12 { align-items: center; row-gap: var(--space-2xl); }
+.split-text { grid-column: 1 / span 6; display: flex; flex-direction: column; gap: var(--space-xl); }
+.area p { margin-top: var(--space-sm); max-width: 62ch; }
+.fig { grid-column: 8 / span 5; margin: 0; padding: var(--space-lg); min-width: 0; }
+.panel { background: var(--panel); color: var(--panel-ink); }
+#rsm { display: block; width: 100%; height: auto; }
+.fig-cap { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: var(--space-md); align-items: center; margin-top: var(--space-md); font-size: var(--text-sm); line-height: 1.5; color: var(--color-muted); }
+.xsec { width: 100%; height: auto; }
+.xs-sub { stroke: var(--color-muted); stroke-width: 1.5; }
+.xs-line { fill: var(--color-ink); fill-opacity: 0.12; stroke: var(--color-ink); stroke-width: 1.5; stroke-linejoin: round; }
 
-  /* Publications */
-  .me { color: var(--ink); font-weight: 600; }
-  .venue { margin-top: 6px; font-size: 17px; }
+/* Technical expertise: three across on the paper-2 band, parted by hairlines */
+.expertise { background: var(--color-paper-2); border-top: var(--rule-bar) solid var(--color-rule-2); padding-block: var(--section-gap-s); }
+.expertise h2 { margin-bottom: var(--space-2xl); }
+.tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; }
+.tools > div { padding-inline: var(--space-lg); border-left: var(--rule-hair) solid var(--color-rule); }
+.tools > div:first-child { padding-left: 0; border-left: 0; }
+.tools > div:last-child { padding-right: 0; }
+.tools dt { font: 600 var(--text-title)/1.2 var(--font-display); letter-spacing: var(--tracking-display); color: var(--color-ink); }
+.tools dd { margin: var(--space-sm) 0 0; }
 
+/* Publications: the one ink band */
+.band-ink { background: var(--color-ink); color: var(--color-paper); padding-block: var(--section-gap-s); }
+.band-ink h2, .band-ink h3 { color: var(--color-sheet); }
+.pubs { row-gap: var(--space-xl); align-items: start; }
+.pubs h2 { grid-column: 1 / span 4; }
+.pub { grid-column: 5 / span 8; display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--space-xl); margin: 0; padding: 0; list-style: none; }
+.pub .year { font: 500 var(--text-xl)/1.2 var(--font-outlier); font-variant-numeric: tabular-nums; color: var(--color-sheet); }
+.pub h3 { font-size: var(--text-2xl); line-height: 1.15; max-width: 32ch; }
+.pub .authors { margin-top: var(--space-md); }
+.pub .me { font-weight: 500; color: var(--color-sheet); }
+.pub .venue { margin-top: var(--space-xs); }
 
-  footer { padding-block: 28px 56px; border-top: 1px solid var(--rule); font-family: var(--font-ui); font-size: 15px; color: var(--ink-soft); }
-  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; }
+/* Contact: the address set large, the place under it */
+.contact { padding-block: var(--section-gap) var(--section-gap-s); }
+.contact h2 { margin-bottom: var(--space-xl); }
+.reach { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm) var(--space-lg); min-width: 0; }
+.reach a { font: 600 var(--text-3xl)/1.1 var(--font-display); letter-spacing: var(--tracking-display); overflow-wrap: anywhere; }
+.place { margin: var(--space-lg) 0 0; }
+.place dt { font: 500 var(--text-sm)/1.3 var(--font-body); color: var(--color-muted); }
+.place dd { margin: var(--space-2xs) 0 0; }
 
-  @media (max-width: 920px) {
-    .hero > .wrap { grid-template-columns: minmax(0, 1fr); }
-    .intro { padding-top: 0; }
-    .fig { max-width: 560px; }
-  }
-  @media (max-width: 760px) {
-    .sec { padding-block: 40px; }
-    .sec > .wrap { grid-template-columns: minmax(0, 1fr); }
-    .sec h2 { position: static; }
-  }
-  @media (max-width: 960px) {
-    .tl { flex-direction: column; }
-    .tl li {
-      display: grid; grid-template-columns: 56px 8px minmax(0, 1fr); grid-template-rows: auto auto 1fr;
-      column-gap: 14px; min-height: calc(var(--yrs) * 18px);
-    }
-    .tl .yr { grid-column: 1; grid-row: 1; }
-    .tl .yr-end { position: static; grid-column: 1; grid-row: 3; align-self: end; }
-    .tl .bar { grid-column: 2; grid-row: 1 / -1; height: auto; margin: 0 0 3px; }
-    .tl li:last-child .bar { margin: 0; }
-    .tl .what { grid-column: 3; grid-row: 1; padding: 0; }
-    .tl .where { grid-column: 3; grid-row: 2; padding: 0 0 12px; white-space: normal; }
-  }
-  @media (max-width: 520px) {
-    .hero { padding-block: 32px 40px; }
-    html { scroll-padding-top: 96px; }
-    .nav .brand { display: none; }
-    .nav ul { flex: 1; flex-wrap: wrap; justify-content: center; gap: 0 12px; overflow: visible; padding-block: 4px; }
-    .nav li a { padding: 6px 2px; }
-    .hero > .wrap { row-gap: 24px; }
-    .lead { font-size: 20px; margin-top: 24px; }
-    .facts { column-gap: 12px; }
-    .fig { padding: 8px; }
-    .tools { grid-template-columns: minmax(0, 1fr); gap: 3px; }
-    .tools dd + dt { margin-top: 10px; }
-    .item { grid-template-columns: minmax(0, 1fr); gap: 2px; }
-    .fig-cap { grid-template-columns: 46px minmax(0, 1fr); align-items: start; }
-  }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* Footer: a letter close */
+footer { padding-block: var(--space-2xl) var(--space-3xl); }
+.close { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-xs) var(--space-lg); padding-top: var(--space-lg); border-top: var(--rule-bar) solid var(--color-rule-2); }
+.signoff { font: 600 var(--text-xl)/1.2 var(--font-display); letter-spacing: var(--tracking-display); color: var(--color-ink); }
+.dated { font-size: var(--text-sm); color: var(--color-muted); }
+
+@media (max-width: 60rem) {
+  .hero-id, .hero-about, .split-text, .fig, .pubs h2, .pub { grid-column: 1 / -1; }
+  .fig { max-width: 560px; }
+  .tools { grid-template-columns: minmax(0, 1fr); }
+  .tools > div { padding: var(--space-md) 0; border-left: 0; border-top: var(--rule-hair) solid var(--color-rule); }
+  .tools > div:first-child { padding-top: 0; border-top: 0; }
+  /* The record restacks: one labelled block a row, its span kept to scale */
+  .record-sheet { padding-inline: var(--space-md); }
+  .record, .record thead, .record tbody, .record tr, .record th, .record td { display: block; width: auto; }
+  .record thead tr > :not(.span) { display: none; }
+  .record th, .record td { padding: 0; }
+  .record .yrs, .record .span { width: auto; }
+  .record .what { white-space: normal; }
+  .record thead th.span { padding-block: var(--space-xs); }
+  .record tbody tr { display: grid; row-gap: var(--space-2xs); padding-block: var(--space-md); }
+  .record tbody tr + tr { border-top: var(--rule-hair) solid var(--color-rule); }
+  .record tbody tr + tr > * { border-top: 0; }
+  .record .span { margin-top: var(--space-xs); }
+}
+@media (max-width: 40rem) {
+  .brand { display: none; }
+  /* The owner's choice: on a phone the five links wrap, centred, so none hides off-screen */
+  .nav ul { flex: 1; flex-wrap: wrap; justify-content: center; gap: 0 var(--space-sm); overflow: visible; padding-block: var(--space-2xs); }
+  .nav li a { padding-block: var(--space-xs); }
+  .pub { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-xs); }
+  .reach a { font-size: var(--text-xl); }
+  .fig { padding: var(--space-md); }
+  .fig-cap { grid-template-columns: minmax(0, 1fr); }
+  .xsec { max-width: 112px; }
+}
 </style>
 </head>
 <body>
 <nav class="nav" aria-label="Sections">
-  <div class="wrap">
+  <div class="container">
     <a class="brand" href="#top">Young Je Yoon</a>
     <ul>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </nav>
 
 <header class="hero" id="top">
-  <div class="wrap">
-    <div class="intro">
-      <h1>Young&nbsp;Je Yoon</h1>
-      <p class="role">Integrated <span class="nw">M.S.–Ph.D.</span> student, UNIST</p>
-      <div class="lead">
-        <p>My research focuses on characterizing nanoscale structures using <span class="nw">X-ray</span> scattering.</p>
-        <p>My work in large language models investigates how language differences affect information retrieval and reasoning.</p>
+  <div class="container">
+    <div class="hero-head grid12">
+      <div class="hero-id">
+        <h1>Young&nbsp;Je Yoon</h1>
+        <p class="role">Integrated <span class="nw">M.S.–Ph.D.</span> student, UNIST</p>
       </div>
-      <dl class="facts">
-        <dt>Advisor</dt>
-        <dd>Prof.&nbsp;Tae&nbsp;Joo&nbsp;Shin</dd>
-        <dt>School</dt>
-        <dd>Graduate School of Semiconductor Materials and Devices Engineering, UNIST</dd>
-        <dt>Email</dt>
-        <dd class="mail"><a id="email-hero" href="mailto:yoonyoungje@unist.ac.kr">yoonyoungje@unist.ac.kr</a><button class="copy" type="button" data-copy="email-hero">Copy</button></dd>
-      </dl>
+      <div class="hero-about">
+        <div class="lead">
+          <p>My research focuses on characterizing nanoscale structures using <span class="nw">X-ray</span> scattering.</p>
+          <p>My work in large language models investigates how language differences affect information retrieval and reasoning.</p>
+        </div>
+        <dl class="facts">
+          <dt>Advisor</dt>
+          <dd>Prof.&nbsp;Tae&nbsp;Joo&nbsp;Shin</dd>
+          <dt>Email</dt>
+          <dd class="mail"><a id="email-hero" href="mailto:yoonyoungje@unist.ac.kr">yoonyoungje@unist.ac.kr</a><button class="copy" type="button" data-copy="email-hero">Copy</button></dd>
+        </dl>
+      </div>
     </div>
 
-    <figure class="fig">
+    <div class="sheet record-sheet" id="timeline">
+      <h2 class="sheet-head" id="h-timeline">Timeline</h2>
+      <table class="record" aria-label="Career from 2009 to the present, drawn to scale">
+        <thead>
+          <tr>
+            <th scope="col"><span class="visually-hidden">Years</span></th>
+            <th scope="col"><span class="visually-hidden">Position</span></th>
+            <th scope="col"><span class="visually-hidden">Where</span></th>
+            <th scope="col" class="span"><span class="axis"><span>2009</span><span class="word">Present</span></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="now" id="education">
+            <td class="yrs">2023–<span class="word">present</span><span class="kind">Education</span></td>
+            <th scope="row" class="what">Integrated <span class="nw">M.S.–Ph.D.</span></th>
+            <td class="where">UNIST, Graduate School of Semiconductor Materials and Devices Engineering</td>
+            <td class="span"><span class="track" aria-hidden="true"><span class="bar" style="--s: 2023; --e: 2026.9"></span></span></td>
+          </tr>
+          <tr id="experience">
+            <td class="yrs">2019–2023<span class="kind">Industry experience</span></td>
+            <th scope="row" class="what"><span class="nw">Mass-production</span> technology development</th>
+            <td class="where">Startup development team</td>
+            <td class="span"><span class="track" aria-hidden="true"><span class="bar" style="--s: 2019; --e: 2023"></span></span></td>
+          </tr>
+          <tr>
+            <td class="yrs">2016–2019<span class="kind">Industry experience</span></td>
+            <th scope="row" class="what"><span class="nw">Mass-production</span> technology development</th>
+            <td class="where">Development team, display manufacturer</td>
+            <td class="span"><span class="track" aria-hidden="true"><span class="bar" style="--s: 2016; --e: 2019"></span></span></td>
+          </tr>
+          <tr>
+            <td class="yrs">2009–2016<span class="kind">Education</span></td>
+            <th scope="row" class="what">B.S., Applied Organic Materials Engineering</th>
+            <td class="where">Inha University</td>
+            <td class="span"><span class="track" aria-hidden="true"><span class="bar" style="--s: 2009; --e: 2016"></span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="research" id="research" aria-labelledby="h-research">
+  <div class="container grid12">
+    <div class="split-text">
+      <h2 id="h-research">Research</h2>
+      <div class="area">
+        <h3><span class="nw">X-ray</span> scattering metrology for semiconductor nanostructures</h3>
+        <p>I study <span class="nw">X-ray</span> scattering techniques for the nondestructive characterization of nanoscale semiconductor patterns. My research focuses on critical-dimension small-angle <span class="nw">X-ray</span> scattering (<span class="nw">CD-SAXS</span>), combining scattering simulations and inverse modeling to reconstruct the cross-sectional profiles of nanoscale patterns. I also investigate metrology challenges associated with EUV lithography and advanced semiconductor fabrication.</p>
+      </div>
+      <div class="area">
+        <h3>Cross-lingual retrieval and LLM evaluation</h3>
+        <p>I study retrieval-augmented language models in cross-lingual settings, where a question in one language requires evidence written in another. My research focuses on <span class="nw">multi-hop</span> question answering, with particular attention to retrieval effectiveness and answer faithfulness. I developed <a class="nw" href="#publications">K-CrossHop</a>, a <span class="nw">Korean–English</span> benchmark for examining where cross-lingual failures arise in retrieval and evidence-based answering.</p>
+      </div>
+    </div>
+
+    <figure class="fig sheet">
       <div class="panel">
         <canvas id="rsm" width="480" height="472" role="img" aria-label="Simulated CD-SAXS reciprocal-space map. Vertical Bragg rods of a line grating fill a bow-tie region opened by rotating the sample to plus and minus 60 degrees."></canvas>
       </div>
@@ -261,131 +278,64 @@
       </figcaption>
     </figure>
   </div>
-</header>
+</section>
 
-<section class="sec" id="research" aria-labelledby="h-research">
-  <div class="wrap">
-    <h2 id="h-research">Research</h2>
-    <div class="body">
-      <div class="area">
-        <h3><span class="nw">X-ray</span> scattering metrology for semiconductor nanostructures</h3>
-        <p>I study <span class="nw">X-ray</span> scattering techniques for the nondestructive characterization of nanoscale semiconductor patterns. My research focuses on critical-dimension small-angle <span class="nw">X-ray</span> scattering (<span class="nw">CD-SAXS</span>), combining scattering simulations and inverse modeling to reconstruct the cross-sectional profiles of nanoscale patterns. I also investigate metrology challenges associated with EUV lithography and advanced semiconductor fabrication.</p>
-      </div>
-      <div class="area">
-        <h3>Cross-lingual retrieval and LLM evaluation</h3>
-        <p>I study retrieval-augmented language models in cross-lingual settings, where a question in one language requires evidence written in another. My research focuses on <span class="nw">multi-hop</span> question answering, with particular attention to retrieval effectiveness and answer faithfulness. I developed <a class="nw" href="#publications">K-CrossHop</a>, a <span class="nw">Korean–English</span> benchmark for examining where cross-lingual failures arise in retrieval and evidence-based answering.</p>
-      </div>
+<section class="expertise" id="expertise" aria-labelledby="h-expertise">
+  <div class="container">
+    <div>
+      <h2 id="h-expertise">Technical expertise</h2>
+      <dl class="tools">
+        <div>
+          <dt>Characterization</dt>
+          <dd><span class="nw">X-ray</span> scattering (<span class="nw">CD-SAXS</span>), synchrotron beamline instrumentation, SEM, FIB</dd>
+        </div>
+        <div>
+          <dt>Nanofabrication</dt>
+          <dd><span class="nw">Electron-beam</span> lithography (EBL), inductively coupled plasma <span class="nw">reactive-ion</span> etching (<span class="nw">ICP-RIE</span>)</dd>
+        </div>
+        <div>
+          <dt>Computation</dt>
+          <dd>Python, scattering simulation, inverse modeling, numerical optimization, machine learning, LLM evaluation</dd>
+        </div>
+      </dl>
     </div>
   </div>
 </section>
 
-<section class="sec" id="timeline" aria-labelledby="h-timeline">
-  <div class="wrap">
-    <h2 id="h-timeline">Timeline</h2>
-    <div class="body">
-      <ol class="tl" aria-label="Career from 2009 to the present, drawn to scale">
-        <li class="edu" style="--yrs: 7"><span class="yr">2009</span><span class="bar"></span><span class="what">B.S.</span><span class="where">Inha University</span></li>
-        <li class="ind" style="--yrs: 3"><span class="yr">2016</span><span class="bar"></span><span class="what">Display industry</span><span class="where">Development team</span></li>
-        <li class="ind" style="--yrs: 4"><span class="yr">2019</span><span class="bar"></span><span class="what">Start-up</span><span class="where"><span class="nw">Mass-production</span> technology</span></li>
-        <li class="edu" style="--yrs: 3.9"><span class="yr">2023</span><span class="yr yr-end">Present</span><span class="bar"></span><span class="what">Integrated <span class="nw">M.S.–Ph.D.</span></span><span class="where">UNIST</span></li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="expertise" aria-labelledby="h-expertise">
-  <div class="wrap">
-    <h2 id="h-expertise">Technical expertise</h2>
-    <dl class="tools">
-      <dt>Characterization</dt>
-      <dd><span class="nw">X-ray</span> scattering (<span class="nw">CD-SAXS</span>), synchrotron beamline instrumentation, SEM, FIB</dd>
-      <dt>Nanofabrication</dt>
-      <dd><span class="nw">Electron-beam</span> lithography (EBL), inductively coupled plasma <span class="nw">reactive-ion</span> etching (<span class="nw">ICP-RIE</span>)</dd>
-      <dt>Computation</dt>
-      <dd>Python, scattering simulation, inverse modeling, numerical optimization, machine learning, LLM evaluation</dd>
-    </dl>
-  </div>
-</section>
-
-<section class="sec" id="publications" aria-labelledby="h-publications">
-  <div class="wrap">
+<section class="band-ink" id="publications" aria-labelledby="h-publications">
+  <div class="container grid12 pubs">
     <h2 id="h-publications">Publications</h2>
-    <div class="body">
-      <ol class="items">
-        <li class="item">
-          <div class="when">2027</div>
-          <div>
-            <h3><span class="nw">K-CrossHop</span>: A <span class="nw">Two-Stage</span> Decomposition of <span class="nw">Query-Side</span> <span class="nw">Cross-Lingual</span> Failures in <span class="nw">Korean–English</span> Agentic RAG</h3>
-            <p class="org"><span class="me">Young&nbsp;Je&nbsp;Yoon</span>, Tae&nbsp;Joo&nbsp;Shin<sup>†</sup></p>
-            <p class="venue"><i>Findings of the Association for Computational Linguistics: EACL&nbsp;2027</i>. Accepted, to&nbsp;appear.</p>
-          </div>
-        </li>
-      </ol>
+    <ol class="pub">
+      <li class="year">2027</li>
+      <li>
+        <h3><span class="nw">K-CrossHop</span>: A <span class="nw">Two-Stage</span> Decomposition of <span class="nw">Query-Side</span> <span class="nw">Cross-Lingual</span> Failures in <span class="nw">Korean–English</span> Agentic RAG</h3>
+        <p class="authors"><span class="me">Young&nbsp;Je&nbsp;Yoon</span>, Tae&nbsp;Joo&nbsp;Shin<sup>†</sup></p>
+        <p class="venue"><i>Findings of the Association for Computational Linguistics: EACL&nbsp;2027</i>. Accepted, to&nbsp;appear.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-labelledby="h-contact">
+  <div class="container">
+    <h2 id="h-contact">Contact</h2>
+    <div>
+      <p class="reach"><a id="email-contact" href="mailto:yoonyoungje@unist.ac.kr">yoonyoungje@unist.ac.kr</a><button class="copy" type="button" data-copy="email-contact">Copy</button></p>
+      <dl class="place">
+        <dt>Address</dt>
+        <dd>UNIST, Ulsan, Republic of Korea</dd>
+      </dl>
     </div>
   </div>
 </section>
-
-<section class="sec" id="experience" aria-labelledby="h-experience">
-  <div class="wrap">
-    <h2 id="h-experience">Industry experience</h2>
-    <ol class="items">
-      <li class="item">
-        <div class="when">2019–2023</div>
-        <div>
-          <h3><span class="nw">Mass-production</span> technology development</h3>
-          <p class="org">Startup development team</p>
-        </div>
-      </li>
-      <li class="item">
-        <div class="when">2016–2019</div>
-        <div>
-          <h3><span class="nw">Mass-production</span> technology development</h3>
-          <p class="org">Development team, display manufacturer</p>
-        </div>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<section class="sec" id="education" aria-labelledby="h-education">
-  <div class="wrap">
-    <h2 id="h-education">Education</h2>
-    <ol class="items">
-      <li class="item">
-        <div class="when">2023–present</div>
-        <div>
-          <h3>Integrated <span class="nw">M.S.–Ph.D.</span></h3>
-          <p class="org">UNIST, Graduate School of Semiconductor Materials and Devices Engineering</p>
-          <p class="note">Advisor: Prof.&nbsp;Tae&nbsp;Joo&nbsp;Shin</p>
-        </div>
-      </li>
-      <li class="item">
-        <div class="when">2009–2016</div>
-        <div>
-          <h3>B.S., Applied Organic Materials Engineering</h3>
-          <p class="org">Inha University</p>
-        </div>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<section class="sec" id="contact" aria-labelledby="h-contact">
-  <div class="wrap">
-    <h2 id="h-contact">Contact</h2>
-    <dl class="facts" style="margin: 0">
-      <dt>Email</dt>
-      <dd class="mail"><a id="email-contact" href="mailto:yoonyoungje@unist.ac.kr">yoonyoungje@unist.ac.kr</a><button class="copy" type="button" data-copy="email-contact">Copy</button></dd>
-      <dt>Address</dt>
-      <dd>UNIST, Ulsan, Republic of Korea</dd>
-    </dl>
-  </div>
-</section>
+</main>
 
 <footer>
-  <div class="wrap">
-    <span>© 2026 Young Je Yoon</span>
-    <span>Last updated November 2026</span>
+  <div class="container">
+    <div class="close">
+      <p class="signoff">© 2026 Young Je Yoon</p>
+      <p class="dated">Last updated November 2026</p>
+    </div>
   </div>
 </footer>
 
@@ -422,11 +372,8 @@
     var panel = canvas.parentNode;
     var ctx = canvas.getContext("2d");
     var css = getComputedStyle(document.documentElement);
-    var col = {
-      panel: css.getPropertyValue("--panel").trim() || "#0B1022",
-      ink: css.getPropertyValue("--panel-ink").trim() || "#C9D1E6",
-      rule: css.getPropertyValue("--panel-rule").trim() || "#3A4560"
-    };
+    function token(name) { return css.getPropertyValue(name).trim(); }
+    var col = { panel: token("--panel"), ink: token("--panel-ink"), rule: token("--panel-rule") };
 
     // Simulated grating (nm): symmetric trapezoidal line, not a measured sample.
     var PITCH = 100, HEIGHT = 60, CD_BOT = 50, CD_TOP = 34, NSLAB = 40, SIGMA_DW = 1.0;
@@ -437,8 +384,8 @@
     var OMEGA_START = 10, OMEGA_END = 60, DURATION = 1500;   // degrees, ms
     var M = { l: 48, r: 12, t: 12, b: 44 };                    // plot margins (CSS px)
     var TICKS = [-0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6];
-    var UI = '"Archivo Narrow", "Arial Narrow", Arial, sans-serif';
-    var SERIF = '"STIX Two Text", "Times New Roman", serif';
+    var MONO = token("--font-outlier");  // tick figures and the rotation readout
+    var SERIF = token("--font-body");    // axis titles
 
     var G = 2 * Math.PI / PITCH, DZ = HEIGHT / NSLAB;
     var slabZ = [], slabW = [];
@@ -577,7 +524,7 @@
       ctx.strokeRect(x0 + 0.5 * s, y0 + 0.5 * s, pw - s, ph - s);
       ctx.strokeStyle = col.ink;
       ctx.fillStyle = col.ink;
-      ctx.font = (11 * s) + "px " + UI;
+      ctx.font = (11 * s) + "px " + MONO;
       ctx.beginPath();
       ctx.textAlign = "center";
       ctx.textBaseline = "top";
@@ -596,8 +543,8 @@
       ctx.stroke();
 
       // Axis titles: q_y (nm^-1), q_z (nm^-1)
-      var big = "italic " + (14 * s) + "px " + SERIF, sub = "italic " + (10 * s) + "px " + SERIF;
-      var reg = (13 * s) + "px " + SERIF, sup = (9 * s) + "px " + SERIF;
+      var big = "italic " + (15 * s) + "px " + SERIF, sub = "italic " + (11 * s) + "px " + SERIF;
+      var reg = (14 * s) + "px " + SERIF, sup = (10 * s) + "px " + SERIF;
       function title(letter) {
         return [["q", big, 0], [letter, sub, 3 * s], [" (nm", reg, 0], ["−1", sup, -5 * s], [")", reg, 0]];
       }
@@ -605,10 +552,10 @@
       runs(title("z"), 14 * s, y0 + ph / 2, true, false);
 
       // Rotation readout on a small backing so it stays legible over the rods
-      var label = [["ω", big, 0], [" = ±" + Math.round(omega) + "°", reg, 0]];
+      var label = [["ω", big, 0], [" = ±" + Math.round(omega) + "°", (12 * s) + "px " + MONO, 0]];
       ctx.fillStyle = col.panel;
       ctx.globalAlpha = 0.85;
-      ctx.fillRect(x0 + 6 * s, y0 + 6 * s, 74 * s, 22 * s);
+      ctx.fillRect(x0 + 6 * s, y0 + 6 * s, 86 * s, 22 * s);
       ctx.globalAlpha = 1;
       ctx.fillStyle = col.ink;
       runs(label, x0 + 12 * s, y0 + 22 * s, false, true);
