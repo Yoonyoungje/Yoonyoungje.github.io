@@ -165,9 +165,8 @@
   /* Research */
   .statement { font-size: 21px; line-height: 1.55; max-width: 34em; text-wrap: pretty; }
   .flag { margin-bottom: 10px; line-height: 1.4; }
-  .strands { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; }
-  .strands p { color: var(--ink-soft); margin-top: 6px; }
-  .tools { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 24px; margin: 12px 0 0; }
+  .area p { margin-top: 8px; max-width: 36em; }
+  .tools { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 24px; margin: 0; }
   .tools dt { font-family: var(--font-ui); font-size: 16px; color: var(--ink-soft); padding-top: 2px; }
   .tools dd { margin: 0; min-width: 0; }
 
@@ -193,7 +192,6 @@
     .sec { padding-block: 40px; }
     .sec > .wrap { grid-template-columns: minmax(0, 1fr); }
     .sec h2 { position: static; }
-    .strands { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 960px) {
     .tl { flex-direction: column; }
@@ -289,30 +287,31 @@
     <div class="body">
       <div class="statement">
         <p class="flag"><span class="todo">draft, rewrite in your own words</span></p>
-        <p>My Ph.D. research is <span class="nw">X-ray</span> metrology for semiconductor patterning. I use transmission <span class="nw">CD-SAXS</span> to measure the cross-sectional shapes of nanoscale line patterns. I also built <span class="nw">K-CrossHop</span>, a benchmark for <span class="nw">Korean–English</span> agentic RAG, and found that most of the cross-lingual loss comes from failing to retrieve answer-bearing evidence.</p>
+        <p>My research spans two independent areas, <span class="nw">X-ray</span> metrology for semiconductor patterning and the evaluation of multilingual large language models.</p>
       </div>
-      <div class="strands">
-        <div>
-          <h3><span class="nw">X-ray</span> metrology of nanoscale patterns</h3>
-          <p><span class="nw">CD-SAXS</span> metrology, semiconductor micropatterns, EUV interference lithography</p>
-        </div>
-        <div>
-          <h3>Cross-lingual LLM agents</h3>
-          <p>Agentic RAG, cross-lingual retrieval, LLM faithfulness evaluation</p>
-        </div>
+      <div class="area">
+        <h3><span class="nw">X-ray</span> scattering metrology for semiconductor patterning</h3>
+        <p>I study <span class="nw">X-ray</span> scattering methods for measuring the nanoscale patterns used in semiconductor manufacturing. My current focus is critical-dimension small-angle <span class="nw">X-ray</span> scattering (<span class="nw">CD-SAXS</span>), from scattering simulation to the inverse modeling that reconstructs the cross-sectional profiles of line patterns. I am also interested in EUV lithography and the metrology challenges associated with advanced semiconductor fabrication.</p>
       </div>
-      <div>
-        <h3>Methods and tools</h3>
-        <dl class="tools">
-          <dt>Measurement</dt>
-          <dd><span class="nw">X-ray</span> scattering analysis, synchrotron beamline instrumentation, SEM&nbsp;/&nbsp;FIB</dd>
-          <dt>Fabrication</dt>
-          <dd>EBL, <span class="nw">ICP-RIE</span></dd>
-          <dt>Computation</dt>
-          <dd>Python, machine learning, LLM evaluation</dd>
-        </dl>
+      <div class="area">
+        <h3>Cross-lingual retrieval and LLM evaluation</h3>
+        <p>I study how language differences affect evidence retrieval and answer generation in multilingual retrieval-augmented generation (RAG). My work focuses on <span class="nw">Korean–English</span> agentic RAG for <span class="nw">multi-hop</span> question answering, where I measure retrieval success and answer faithfulness separately to locate where failures arise. I built the <span class="nw">K-CrossHop</span> benchmark for this purpose.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="sec" id="expertise" aria-labelledby="h-expertise">
+  <div class="wrap">
+    <h2 id="h-expertise">Technical expertise</h2>
+    <dl class="tools">
+      <dt>Characterization</dt>
+      <dd><span class="nw">X-ray</span> scattering (<span class="nw">CD-SAXS</span>), synchrotron beamline instrumentation, SEM, FIB</dd>
+      <dt>Nanofabrication</dt>
+      <dd><span class="nw">Electron-beam</span> lithography (EBL), inductively coupled plasma <span class="nw">reactive-ion</span> etching (<span class="nw">ICP-RIE</span>)</dd>
+      <dt>Computation</dt>
+      <dd>Python, scattering simulation, inverse modeling, numerical optimization, machine learning, LLM evaluation</dd>
+    </dl>
   </div>
 </section>
 
