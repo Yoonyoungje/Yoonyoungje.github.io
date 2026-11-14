@@ -164,8 +164,6 @@
   #timeline h2 { position: static; }
 
   /* Research */
-  .statement { font-size: 21px; line-height: 1.55; max-width: 34em; text-wrap: pretty; }
-  .flag { margin-bottom: 10px; line-height: 1.4; }
   .area p { margin-top: 8px; max-width: 36em; }
   .tools { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 24px; margin: 0; }
   .tools dt { font-family: var(--font-ui); font-size: 16px; color: var(--ink-soft); padding-top: 2px; }
@@ -176,10 +174,6 @@
   .venue { margin-top: 6px; font-size: 17px; }
 
   /* Items still to be filled in or confirmed */
-  .todo {
-    display: inline-block; font: 500 14px/1.4 var(--font-ui); color: var(--crimson);
-    border: 1px dashed currentColor; border-radius: 3px; padding: 1px 6px;
-  }
   .confirm { text-decoration: underline 1px dashed var(--crimson); text-underline-offset: 4px; }
 
   footer { padding-block: 28px 56px; border-top: 1px solid var(--rule); font-family: var(--font-ui); font-size: 15px; color: var(--ink-soft); }
@@ -210,7 +204,7 @@
   @media (max-width: 520px) {
     .hero { padding-block: 32px 40px; }
     .nav .brand { display: none; }
-    .lead, .statement { font-size: 19px; }
+    .lead { font-size: 19px; }
     .item { grid-template-columns: minmax(0, 1fr); gap: 2px; }
     .fig-cap { grid-template-columns: minmax(0, 1fr); }
   }
@@ -289,17 +283,13 @@
   <div class="wrap">
     <h2 id="h-research">Research</h2>
     <div class="body">
-      <div class="statement">
-        <p class="flag"><span class="todo">draft, rewrite in your own words</span></p>
-        <p>My research spans two independent areas, <span class="nw">X-ray</span> metrology for semiconductor patterning and the evaluation of multilingual large language models.</p>
-      </div>
       <div class="area">
-        <h3><span class="nw">X-ray</span> scattering metrology for semiconductor patterning</h3>
-        <p>I study <span class="nw">X-ray</span> scattering methods for measuring the nanoscale patterns used in semiconductor manufacturing. My current focus is critical-dimension small-angle <span class="nw">X-ray</span> scattering (<span class="nw">CD-SAXS</span>), from scattering simulation to the inverse modeling that reconstructs the cross-sectional profiles of line patterns. I am also interested in EUV lithography and the metrology challenges associated with advanced semiconductor fabrication.</p>
+        <h3><span class="nw">X-ray</span> scattering metrology for semiconductor nanostructures</h3>
+        <p>I study <span class="nw">X-ray</span> scattering techniques for the nondestructive characterization of nanoscale semiconductor patterns. My research focuses on critical-dimension small-angle <span class="nw">X-ray</span> scattering (<span class="nw">CD-SAXS</span>), including scattering simulations, inverse modeling, and the reconstruction of pattern cross-sectional profiles. I also investigate metrology challenges associated with EUV lithography and advanced semiconductor fabrication.</p>
       </div>
       <div class="area">
         <h3>Cross-lingual retrieval and LLM evaluation</h3>
-        <p>I study how language differences affect evidence retrieval and answer generation in multilingual retrieval-augmented generation (RAG). My work focuses on <span class="nw">Korean–English</span> agentic RAG for <span class="nw">multi-hop</span> question answering, where I measure retrieval success and answer faithfulness separately to locate where failures arise. I built the <span class="nw">K-CrossHop</span> benchmark for this purpose.</p>
+        <p>I study retrieval-augmented language models in cross-lingual settings, where a question in one language requires evidence written in another. My research focuses on <span class="nw">multi-hop</span> question answering, with particular attention to retrieval effectiveness and answer faithfulness. I developed <span class="nw">K-CrossHop</span>, a <span class="nw">Korean–English</span> benchmark for examining where cross-lingual failures arise in retrieval and evidence-based answering.</p>
       </div>
     </div>
   </div>
